@@ -2,9 +2,9 @@ import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import background from "./images/clearsky.jpg";
 
-import SearchSection from "./SearchSection";
-import CurrentInfoLine from "./CurrentInfoLine";
-import ForecastSection from "./ForecastSection";
+import SearchSection from "./SearchSection.js";
+import CurrentInfoLine from "./CurrentInfoLine.js";
+import ForecastSection from "./ForecastSection.js";
 import Footer from "./Footer";
 
 export default function FullPageContainer() {
@@ -13,7 +13,7 @@ export default function FullPageContainer() {
       className="FullPageContainer"
       style={{ backgroundImage: `url(${background})` }}
     >
-      <Search Section />
+      <SearchSection />
       <CurrentInfoLine />
       <ForecastSection />
       <Footer />
