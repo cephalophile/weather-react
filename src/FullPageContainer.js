@@ -13,7 +13,7 @@ export default function FullPageContainer() {
       className="FullPageContainer"
       style={{ backgroundImage: `url(${background})` }}
     >
-      <SearchSection />
+      <SearchSection defaultCity = "Durham"/>
       <CurrentInfoLine />
       <ForecastSection />
       <Footer />
