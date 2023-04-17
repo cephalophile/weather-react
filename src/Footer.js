@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="sig">
         <a
           className="codeLink"
-          href="https://github.com/cephalophile/she-codes-plus-weather-app"
+          href="https://github.com/cephalophile/weather-react.git"
           target="_blank"
           rel="noreferrer"
         >
