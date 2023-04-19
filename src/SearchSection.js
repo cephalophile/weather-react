@@ -25,9 +25,9 @@ export default function SearchSection() {
       city: response.data.name,
       country: response.data.sys.country,
       feelslike: Math.round(response.data.main.feels_like),
+      unit: `${units}`,
     });
     console.log(weatherData.city);
-    console.log({units});
   }
 
   function getCurrentPosition() {
@@ -59,6 +59,15 @@ export default function SearchSection() {
     formInput.value = ``;
   }
 
+  function convertToC(){
+    setUnits('metric');
+    console.log({units});
+  }
+
+  function convertToF(){
+    setUnits('imperial');
+    console.log({units});
+  }
   return (
     <div className="SearchSection">
       <form className="searchBox" id="new-location-form" onSubmit={handleSubmit}>
@@ -67,7 +76,7 @@ export default function SearchSection() {
       </form>
       <button id="current-location-button" onClick={getCurrentPosition}>Current</button>
       <h3 className="tempOptions">
-        <span id="celsius" onClick={event => setUnits(event, 'meteric')}>℃</span>|<span id="fahrenheit" onClick={event => setUnits(event, 'imperial')}>℉</span>
+        <span id="celsius" onClick={convertToC}>℃</span>|<span id="fahrenheit" onClick={convertToF}>℉</span>
       </h3>
       <CurrentInfoLine weatherData={weatherData} />
       <ForecastSection weatherData={weatherData} />
