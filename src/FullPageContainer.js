@@ -19,9 +19,7 @@ export default function FullPageContainer() {
       style={{ backgroundImage: `url(${background})` }}
     >
       <SearchSection />
-      <CurrentInfoLine />
-      <ForecastSection />
-      <Footer />
+     <Footer />
     </div>
   );
 }
