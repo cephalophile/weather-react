@@ -1,6 +1,7 @@
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import  React, {useState} from "react";
+import axios from "axios";
 
 export default function SearchSection() {
   const [weatherData, setWeatherData] = useState({ready: false});
@@ -9,7 +10,8 @@ export default function SearchSection() {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      coordinates: response.data.coord,
+      lat: response.data.coord.lat,
+      long: response.data.coord.long,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
@@ -18,6 +20,7 @@ export default function SearchSection() {
       wind: response.data.wind.speed,
       city: response.data.name,
     });
+    console.log(weatherData.city);
   }
 
 
@@ -27,7 +30,6 @@ export default function SearchSection() {
   }
 
   function handleCityChange(event){
-    alert("new city!");
     setCity(event.target.value);
   }
 
@@ -41,8 +43,8 @@ export default function SearchSection() {
   return (
     <div className="SearchSection">
       <form className="searchBox" id="new-location-form" onSubmit={handleSubmit}>
-        <input type="text" id="city-submit" placeholder="search..." onChange={handleCityChange}/>
-        <input type="submit" id="search-city" value="Search"></input>
+        <input type="text" id="city-submit" placeholder="search..." />
+        <input type="submit" id="search-city" value="Search"onChange={handleCityChange}></input>
       </form>
       <button id="current-location-button">Current</button>
       <h3 className="tempOptions">
