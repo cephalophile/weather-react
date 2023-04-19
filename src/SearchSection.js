@@ -8,7 +8,7 @@ import ForecastSection from "./ForecastSection.js";
 export default function SearchSection() {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(null);
-  const [apiKey, setApiKey] = useState("0f381e023853e05653c74e1a82013505");
+  let apiKey = "0f381e023853e05653c74e1a82013505";
   const [units, setUnits] = useState("metric");
 
   function handleResponse(response) {
@@ -27,6 +27,7 @@ export default function SearchSection() {
       feelslike: Math.round(response.data.main.feels_like),
     });
     console.log(weatherData.city);
+    console.log({units});
   }
 
   function getCurrentPosition() {
@@ -52,6 +53,7 @@ export default function SearchSection() {
     setCity(event.target.value);
   }
 
+
   function clearSearch() {
     let formInput = document.getElementById(`city-submit`);
     formInput.value = ``;
@@ -65,10 +67,11 @@ export default function SearchSection() {
       </form>
       <button id="current-location-button" onClick={getCurrentPosition}>Current</button>
       <h3 className="tempOptions">
-        <span id="celsius">℃</span>|<span id="fahrenheit">℉</span>
+        <span id="celsius" onClick={event => setUnits(event, 'meteric')}>℃</span>|<span id="fahrenheit" onClick={event => setUnits(event, 'imperial')}>℉</span>
       </h3>
       <CurrentInfoLine weatherData={weatherData} />
       <ForecastSection weatherData={weatherData} />
     </div>
   );
+
 }
