@@ -5,12 +5,12 @@ export default function FeelsLikeTemp(props){
         return(
             <div>
                 <li className="container feelsLike">
-                Feels Like<span className="feelsLikeValue temperature">{props.weatherData.feelslike}℃</span>
+                Feels Like<span className="feelsLikeValue temperature">{Math.round(props.weatherData.feelslike)}℃</span>
                 </li>
             </div>
         );
     } else {
-        let fahrenheit = (Math.round((props.weatherData.temperature)*(9/5)+32));
+        let fahrenheit = (Math.round((props.weatherData.feelslike)*(9/5)+32));
         return(
             <div>
                 <li className="container feelsLike">

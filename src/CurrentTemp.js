@@ -5,7 +5,7 @@ export default function CurrentTemp(props){
     if (props.units === `metric`){
         return(
         <div id="current-temp" className="temperature">
-              {props.weatherData.temperature}℃
+              {Math.round(props.weatherData.temperature)}℃
             </div>
         );
     } else {

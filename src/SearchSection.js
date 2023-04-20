@@ -16,7 +16,7 @@ export default function SearchSection() {
       ready: true,
       lat: response.data.coord.lat,
       lon: response.data.coord.lon,
-      temperature: Math.round(response.data.main.temp),
+      temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].main,
@@ -24,8 +24,8 @@ export default function SearchSection() {
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       country: response.data.sys.country,
-      feelslike: Math.round(response.data.main.feels_like),
-      unit: `${units}`,
+      feelslike: response.data.main.feels_like,
+      unit: {units},
     });
     console.log(weatherData.city);
   }
@@ -48,6 +48,7 @@ export default function SearchSection() {
     axios.get(apiUrl).then(response => handleResponse(response, units));
     clearSearch();
   }
+
 
   function handleCityChange(event){
     setCity(event.target.value);
