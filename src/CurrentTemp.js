@@ -2,7 +2,7 @@ import React from "react";
 
 
 export default function CurrentTemp(props){
-    if (props.units === `metric`){
+    if (props.units === "metric"){
         return(
         <div id="current-temp" className="temperature">
               {Math.round(props.weatherData.temperature)}℃

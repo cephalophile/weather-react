@@ -27,7 +27,6 @@ export default function SearchSection() {
       feelslike: response.data.main.feels_like,
       unit: {units},
     });
-    console.log(weatherData.city);
   }
 
   function getCurrentPosition() {
@@ -40,7 +39,8 @@ export default function SearchSection() {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
-  }
+}
+
   
   function handleSubmit(event){
     event.preventDefault();
@@ -63,13 +63,11 @@ export default function SearchSection() {
   function showC(event){
     event.preventDefault();
     setUnits("metric");
-    console.log({units});
   }
 
   function showF(event){
     event.preventDefault();
     setUnits("imperial");
-    console.log({units});
   }
 
   return (
