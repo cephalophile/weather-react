@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import UnitTemps from "./UnitTemps.js";
+import CurrentTemp from "./CurrentTemp.js";
 
 
 
@@ -20,7 +20,7 @@ export default function CurrentSection(props) {
             </div>
             <div id="current-weather">{props.weatherData.description}</div>
             <div id="current-temp" className="temperature">
-              <UnitTemps weatherData={props.weatherData} units={props.units}/>
+              <CurrentTemp weatherData={props.weatherData} units={props.units}/>
             </div>
             <div id="current-humidity">Humidity: </div>
             <div id="current-humidity-value">{props.weatherData.humidity}%</div>

@@ -1,8 +1,7 @@
 import React from "react";
 
 
-export default function UnitTemps(props){
-    console.log(props.weatherData);
+export default function CurrentTemp(props){
     if (props.units === `metric`){
         return(
         <div id="current-temp" className="temperature">
@@ -10,7 +9,7 @@ export default function UnitTemps(props){
             </div>
         );
     } else {
-        let fahrenheit = (Math.round(props.weatherData.temperature)*(9/5)+32);
+        let fahrenheit = (Math.round((props.weatherData.temperature)*(9/5)+32));
         return(
         <div id="current-temp" className="temperature">
          {fahrenheit}℉
