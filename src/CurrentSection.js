@@ -20,7 +20,7 @@ export default function CurrentSection(props) {
             </div>
             <div id="current-weather">{props.weatherData.description}</div>
             <div id="current-temp" className="temperature">
-              <UnitTemps weatherData={props.weatherData}/>
+              <UnitTemps weatherData={props.weatherData} units={props.units}/>
             </div>
             <div id="current-humidity">Humidity: </div>
             <div id="current-humidity-value">{props.weatherData.humidity}%</div>

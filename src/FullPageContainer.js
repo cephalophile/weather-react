@@ -6,11 +6,6 @@ import SearchSection from "./SearchSection.js";
 import Footer from "./Footer";
 
 export default function FullPageContainer() {
-
-  function handleSubmit(event){
-    event.preventDefault();
-    //what to do when a city is submitted
-  }
   return (
     <div
       className="FullPageContainer"

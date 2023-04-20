@@ -11,7 +11,7 @@ export default function SearchSection() {
   let apiKey = "0f381e023853e05653c74e1a82013505";
   const [units, setUnits] = useState("metric");
 
-  function handleResponse(response) {
+  function handleResponse(response, units) {
     setWeatherData({
       ready: true,
       lat: response.data.coord.lat,
@@ -35,7 +35,7 @@ export default function SearchSection() {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-        axios.get(apiUrl).then(handleResponse);
+        axios.get(apiUrl).then(response => handleResponse(response, units));
       });
     } else {
       alert("Geolocation is not supported by this browser.");
@@ -45,7 +45,7 @@ export default function SearchSection() {
   function handleSubmit(event){
     event.preventDefault();
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(handleResponse);
+    axios.get(apiUrl).then(response => handleResponse(response, units));
     clearSearch();
   }
 
@@ -59,15 +59,18 @@ export default function SearchSection() {
     formInput.value = ``;
   }
 
-  function convertToC(){
-    setUnits('metric');
+  function showC(event){
+    event.preventDefault();
+    setUnits("metric");
     console.log({units});
   }
 
-  function convertToF(){
-    setUnits('imperial');
+  function showF(event){
+    event.preventDefault();
+    setUnits("imperial");
     console.log({units});
   }
+
   return (
     <div className="SearchSection">
       <form className="searchBox" id="new-location-form" onSubmit={handleSubmit}>
@@ -76,10 +79,10 @@ export default function SearchSection() {
       </form>
       <button id="current-location-button" onClick={getCurrentPosition}>Current</button>
       <h3 className="tempOptions">
-        <span id="celsius" onClick={convertToC}>℃</span>|<span id="fahrenheit" onClick={convertToF}>℉</span>
+        <span id="celsius" onClick={showC}>℃</span>|<span id="fahrenheit" onClick={showF}>℉</span>
       </h3>
-      <CurrentInfoLine weatherData={weatherData} />
-      <ForecastSection weatherData={weatherData} />
+      <CurrentInfoLine weatherData={weatherData} units={units}/>
+      <ForecastSection weatherData={weatherData} units={units}/>
     </div>
   );
 
