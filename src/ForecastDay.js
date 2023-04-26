@@ -1,7 +1,7 @@
 import React,  {useState} from "react";
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
+
 
 export default function ForecastDay (props){
     const [loaded, setLoaded] = useState(false);
@@ -18,13 +18,13 @@ export default function ForecastDay (props){
         return(
             <div className="forecastArea day1">
             <p className="weatherIcon" id="day1-icon">
-            ☀
+            {forecastData.daily[0].weather[0].icon}
             </p>
             <p className="forecastDay" id="day1-day">
-            Thu
+            {forecastData.daily[0].dt}
             </p>
             <p className="forecastDate" id="day1-date">
-            Aug 12
+            {forecastData.daily[0].dt}
             </p>
             <p>
             <span className="forecastHigh temperature" id="day1-high">
