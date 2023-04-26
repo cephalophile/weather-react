@@ -43,7 +43,8 @@ input[type="text"]:focus {
   background-color: rgb(76, 131, 175);
 }
 #current-location-button {
-  margin-left: 10px;
+  margin-left: 0px;
+  margin-right: 70px;
   width: 5em;
   text-align: center;
   border: 1px solid transparent;
@@ -57,7 +58,9 @@ input[type="text"]:focus {
 }
 .tempOptions {
   display: inline-flex;
-  margin-left: 50px;
+  margin-left: 40px;
+  margin-right: 20px;
+  margin-top: 10px;
   color: rgb(61, 61, 61);
 }
 #celsius {
@@ -78,12 +81,15 @@ input[type="text"]:focus {
 }
 
 .CurrentInfoLine {
+  max-width: 100%;
+  margin-top: 30px;
   display: flex;
 }
 
 .CurrentSection {
   display: flex;
   flex-direction: row;
+  margin-top: -30px;
 }
 
 #current-weather-icon {
@@ -135,7 +141,7 @@ input[type="text"]:focus {
   align-self: flex-start;
   width: 450px;
   padding-top: 10px;
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 #current-city,
@@ -156,6 +162,7 @@ input[type="text"]:focus {
   right: 40px;
   top: 10px;
   padding-right: 30px;
+  margin-right: -40px;
 }
 
 .container.otherInfo {
@@ -245,8 +252,8 @@ input[type="text"]:focus {
   flex-flow: row wrap;
   justify-content: space-around;
   width: 100%;
-  padding: 25px;
 }
+
 .forecastArea {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.6);
@@ -278,7 +285,7 @@ input[type="text"]:focus {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 100;
   font-size: 12px;
-  padding: 40px 0px 10px 0px;
+  padding: 20px 0px 10px 0px;
 }
 
 .codeLink {
