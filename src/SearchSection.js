@@ -12,7 +12,6 @@ export default function SearchSection() {
   const [units, setUnits] = useState("metric");
 
   function handleResponse(response, units) {
-    console.log(response);
     setWeatherData({
       ready: true,
       lat: response.data.coord.lat,

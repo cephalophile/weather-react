@@ -34,19 +34,3 @@ export default function CurrentSection(props) {
     return "Loading..."; 
   }
 }
- //let apiKey = "0f381e023853e05653c74e1a82013505";
-    //let city = "Durham";
-    //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    //axios.get(apiUrl).then(handleResponse);
-
-//function handleResponse(response){
-    //console.log(response.data);
-    //setWeatherData({
-      //ready: true,
-      //temperature: `${Math.round(response.data.main.temp)}`,
-      //description: response.data.weather[0].main,
-      //humidity: `${response.data.main.humidity}%`,
-      //city: response.data.name,
-      //iconUrl: "http://openweathermap.org/img/wn/10d@2x.png"
-    //});
-  //};
