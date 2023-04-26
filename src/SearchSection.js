@@ -5,7 +5,7 @@ import axios from "axios";
 import CurrentInfoLine from "./CurrentInfoLine.js";
 import ForecastSection from "./ForecastSection.js";
 
-export default function SearchSection() {
+export default function SearchSection(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(null);
   let apiKey = "0f381e023853e05653c74e1a82013505";
@@ -15,7 +15,7 @@ export default function SearchSection() {
   useEffect(() => {
     setFirstView(true);
     getFirstCurrentPosition();
-  }, [firstView == false]);
+  }, [firstView === false]);
 
 
 
@@ -29,6 +29,7 @@ export default function SearchSection() {
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].main,
+      icon: response.data.weather[0].icon,
       iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
@@ -36,6 +37,7 @@ export default function SearchSection() {
       feelslike: response.data.main.feels_like,
       unit: units,
     });
+    props.setBackground(response.data.weather[0].icon);
   }
 
   function getCurrentPosition() {
