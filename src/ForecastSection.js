@@ -20,11 +20,12 @@ export default function ForecastSection(props) {
     return(
       <div className="ForecastSection">
         {forecastData.map(function(dailyForecast, index) {
+          if (index < 5) {
           return( 
             <div key={index}>
-          <ForecastDay forecastData={dailyForecast} units={props.units}/>
+          <ForecastDay data={dailyForecast} units={props.units}/>
           </div>
-          );
+          );}
         })}
       </div>
     );  

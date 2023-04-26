@@ -4,8 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 export default function ForecastDay (props){
-    let iconUrl=`https://openweathermap.org/img/wn/${props.forecastData.weather[0].icon}@2x.png`
-    let iconDescription=`{forecastData.weather[0].description}`;
+    let iconUrl=`https://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`
+    let iconDescription=`{data.weather[0].description}`;
     
     function showDay(){
         let days = [
@@ -17,13 +17,13 @@ export default function ForecastDay (props){
             "Friday",
             "Saturday",
           ];
-        let date = new Date(props.forecastData.dt*1000);
+        let date = new Date(props.data.dt*1000);
         let day =  date.getDay();
         return days[day];
     }
 
     function showDate(){
-        let newDate = new Date(props.forecastData.dt*1000);
+        let newDate = new Date(props.data.dt*1000);
         let date = newDate.getDate();
         return date;
     }
@@ -43,7 +43,7 @@ export default function ForecastDay (props){
             "November",
             "December/",
           ];
-        let date = new Date(props.forecastData.dt*1000);
+        let date = new Date(props.data.dt*1000);
         let month = date.getMonth();
         return months[month];
     }
@@ -57,11 +57,11 @@ export default function ForecastDay (props){
                 <p className="forecastDate" id="day1-date">{showMonth()} {showDate()}</p>
                 <p>
                     <span className="forecastHigh temperature" id="day1-high">
-                        {Math.round(props.forecastData.temp.max)}°
+                        {Math.round(props.data.temp.max)}°
                     </span>{" "}
                     |{" "}
                     <span className="forecastLow temperature" id="day1-low">
-                        {Math.round(props.forecastData.temp.min)}°
+                        {Math.round(props.data.temp.min)}°
                     </span>
                 </p>
             </div>
