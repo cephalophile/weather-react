@@ -19,7 +19,13 @@ export default function ForecastSection(props) {
   if(loaded){
     return(
       <div className="ForecastSection">
-        <ForecastDay forecastData={forecastData} units={props.units}/>
+        {forecastData.map(function(dailyForecast, index) {
+          return( 
+            <div key={index}>
+          <ForecastDay forecastData={dailyForecast} units={props.units}/>
+          </div>
+          );
+        })}
       </div>
     );  
     } else {
