@@ -1,6 +1,6 @@
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import  React, {useState} from "react";
+import  React, {useState, useEffect} from "react";
 import axios from "axios";
 import CurrentInfoLine from "./CurrentInfoLine.js";
 import ForecastSection from "./ForecastSection.js";
@@ -10,6 +10,14 @@ export default function SearchSection() {
   const [city, setCity] = useState(null);
   let apiKey = "0f381e023853e05653c74e1a82013505";
   const [units, setUnits] = useState("metric");
+  const [firstView, setFirstView] = useState(false);
+
+  useEffect(() => {
+    setFirstView(true);
+    getFirstCurrentPosition();
+  }, [firstView == false]);
+
+
 
   function handleResponse(response, units) {
     setWeatherData({
@@ -42,6 +50,30 @@ export default function SearchSection() {
     }
 }
 
+function getFirstCurrentPosition() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+      axios.get(apiUrl).then(response => handleResponse(response, units));
+    });
+  } else {
+    return (
+      <div className="SearchSection">
+        <form className="searchBox" id="new-location-form" onSubmit={handleSubmit}>
+          <input type="text" id="city-submit" placeholder="search..." onChange={handleCityChange} />
+          <input type="submit" id="search-city" value="Search"></input>
+        </form>
+        <button id="current-location-button" onClick={getCurrentPosition}>Current</button>
+        <h3 className="tempOptions">
+          <span id="celsius" onClick={showC}>℃</span>|<span id="fahrenheit" onClick={showF}>℉</span>
+        </h3>
+        <CurrentInfoLine weatherData={weatherData} units={units}/>
+        <ForecastSection weatherData={weatherData} units={units}/>
+      </div>
+    );
+  }
+}
   
   function handleSubmit(event){
     event.preventDefault();
