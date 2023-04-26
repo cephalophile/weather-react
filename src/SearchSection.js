@@ -17,6 +17,7 @@ export default function SearchSection() {
       ready: true,
       lat: response.data.coord.lat,
       lon: response.data.coord.lon,
+      coordinates: response.data.coord,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
