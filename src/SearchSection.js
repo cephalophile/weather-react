@@ -15,7 +15,7 @@ export default function SearchSection(props) {
   useEffect(() => {
     setFirstView(true);
     getFirstCurrentPosition();
-  }, [firstView === false]);
+  }, [firstView]);
 
 
 
