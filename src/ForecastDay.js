@@ -1,50 +1,70 @@
-import React,  {useState} from "react";
+
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
 export default function ForecastDay (props){
-    const [loaded, setLoaded] = useState(false);
-    const [forecastData, setForecastData] = useState(null);
-
-    function handleResponse(response){
-        console.log(response);
-        setForecastData(response.data);
-        setLoaded(true);
+    let iconUrl=`https://openweathermap.org/img/wn/${props.forecastData.weather[0].icon}@2x.png`
+    let iconDescription=`{forecastData.weather[0].description}`;
+    
+    function showDay(){
+        let days = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
+        let date = new Date(props.forecastData.dt*1000);
+        let day =  date.getDay();
+        return days[day];
     }
 
-    if(loaded){
-        console.log(forecastData);
-        return(
-            <div className="forecastArea day1">
-            <p className="weatherIcon" id="day1-icon">
-            {forecastData.daily[0].weather[0].icon}
-            </p>
-            <p className="forecastDay" id="day1-day">
-            {forecastData.daily[0].dt}
-            </p>
-            <p className="forecastDate" id="day1-date">
-            {forecastData.daily[0].dt}
-            </p>
-            <p>
-            <span className="forecastHigh temperature" id="day1-high">
-                {Math.round(forecastData.daily[0].temp.max)}°
-            </span>{" "}
-            |{" "}
-            <span className="forecastLow temperature" id="day1-low">
-                {Math.round(forecastData.daily[0].temp.min)}°
-            </span>
-            </p>
+    function showDate(){
+        let newDate = new Date(props.forecastData.dt*1000);
+        let date = newDate.getDate();
+        return date;
+    }
+
+    function showMonth(){
+        let months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December/",
+          ];
+        let date = new Date(props.forecastData.dt*1000);
+        let month = date.getMonth();
+        return months[month];
+    }
+    return( 
+        <div className="ForecastDay">    
+           <div className="forecastArea day1">
+                <p className="weatherIcon" id="day1-icon">
+                <img id="icon-1" src={iconUrl} alt={iconDescription} />
+                </p>
+                <p className="forecastDay" id="day1-day">{showDay()}</p>
+                <p className="forecastDate" id="day1-date">{showMonth()} {showDate()}</p>
+                <p>
+                    <span className="forecastHigh temperature" id="day1-high">
+                        {Math.round(props.forecastData.temp.max)}°
+                    </span>{" "}
+                    |{" "}
+                    <span className="forecastLow temperature" id="day1-low">
+                        {Math.round(props.forecastData.temp.min)}°
+                    </span>
+                </p>
+            </div>
         </div>
         );
-    } else {
-        console.log(props.weatherData);
-        let lat = props.weatherData.lat;
-        let lon = props.weatherData.lon;
-        let apiKey = `b95f179627c8dd37f41e1be6e3250e19`;
-        let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&cnt=5&appid=${apiKey}&units=metric`;
-        console.log(apiUrl);
-        axios.get(apiUrl).then(handleResponse);
-        return null;
-    }
 }
