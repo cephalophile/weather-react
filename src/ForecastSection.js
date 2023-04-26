@@ -1,29 +1,12 @@
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ForecastDay from "./ForecastDay.js";
 
-export default function ForecastSection() {
+export default function ForecastSection(props) {
   return (
     <div className="ForecastSection">
-      <div className="forecastArea day1">
-        <p className="weatherIcon" id="day1-icon">
-          ☀
-        </p>
-        <p className="forecastDay" id="day1-day">
-          Thu
-        </p>
-        <p className="forecastDate" id="day1-date">
-          Aug 12
-        </p>
-        <p>
-          <span className="forecastHigh temperature" id="day1-high">
-            82°
-          </span>{" "}
-          |{" "}
-          <span className="forecastLow temperature" id="day1-low">
-            66°
-          </span>
-        </p>
-      </div>
+      <ForecastDay weatherData={props.weatherData} units={props.units}/>
+      
       <div className="forecastArea day2">
         <p className="weatherIcon" id="day2-icon">
           ☀
