@@ -12,7 +12,7 @@ export default function ForecastSection(props) {
 
   function handleResponse(response){
     console.log(response);
-    setForecastData(response.data.daily[0]);
+    setForecastData(response.data.daily);
     setLoaded(true);
 }
 
