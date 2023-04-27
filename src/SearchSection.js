@@ -31,7 +31,7 @@ export default function SearchSection(props) {
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].main,
       icon: response.data.weather[0].icon,
-      iconUrl: iconUrl,
+      iconUrl: {iconUrl},
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       country: response.data.sys.country,
