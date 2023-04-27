@@ -20,6 +20,7 @@ export default function SearchSection(props) {
 
 
   function handleResponse(response, units) {
+    let iconUrl = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
     setWeatherData({
       ready: true,
       lat: response.data.coord.lat,
@@ -30,7 +31,7 @@ export default function SearchSection(props) {
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].main,
       icon: response.data.weather[0].icon,
-      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      iconUrl: iconUrl,
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       country: response.data.sys.country,
