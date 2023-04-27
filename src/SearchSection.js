@@ -20,7 +20,7 @@ export default function SearchSection(props) {
 
 
   function handleResponse(response, units) {
-    let iconUrl = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
+    let iconUrl = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
     setWeatherData({
       ready: true,
       lat: response.data.coord.lat,
